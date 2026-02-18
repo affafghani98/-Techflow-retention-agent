@@ -10,7 +10,7 @@ This system uses **3 specialized AI agents** working together to:
 - **Process cancellations** when customers insist
 - **Route appropriately** (technical support, billing) when it's not a cancellation request
 
-## 🏗️ Architecture
+##  Architecture
 
 ### Multi-Agent System (LangGraph)
 1. **Greeter Agent**: Identifies customers, classifies intent, routes to specialists
@@ -22,12 +22,12 @@ This system uses **3 specialized AI agents** working together to:
 - **RAG System**: FAISS vector store with policy documents (return policy, Care+ benefits, troubleshooting guide)
 - **LangGraph Workflow**: Orchestrates agent handoffs and state management
 
-## 📋 Prerequisites
+##  Prerequisites
 
 - Python 3.8 or higher
 - Groq API key (free tier available at https://console.groq.com)
 
-## 🚀 Setup Instructions
+##  Setup Instructions
 
 ### 1. Clone Repository
 
@@ -85,7 +85,7 @@ Make sure these files are in the root directory:
 - `troubleshooting_guide.md` - Tech support guide
 - `retention_playbook.md` - Conversation scripts
 
-## 🧪 Running Test Scenarios
+##  Running Test Scenarios
 
 Run all 5 required test scenarios to verify the system:
 
@@ -128,7 +128,7 @@ Routing: retention
 [RETENTION] Response: I completely understand that financial pressure...
 ```
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 callagent/
@@ -192,7 +192,7 @@ callagent/
 - Helps agents provide accurate, policy-based responses
 - No API key needed for embeddings (runs locally)
 
-## ✨ What's Implemented
+##  What's Implemented
 
 ### Core Features
 
@@ -262,95 +262,3 @@ callagent/
 ## 📝 Logs
 
 Customer actions are logged to `customer_updates.log` in the root directory.
-
-## 🎥 Demo Notes
-
-For your video demo, show:
-1. System initialization
-2. Test 1-3: Retention agent offering solutions
-3. Test 4: Correct routing to technical support
-4. Test 5: Correct routing to billing
-5. Tool calls in action (check logs)
-6. RAG queries retrieving policy information
-7. LangGraph workflow visualization (if possible)
-
-## ⚠️ Important Notes
-
-- Uses **free Groq API** (no cost, fast inference)
-- Uses **free HuggingFace embeddings** (runs locally, no API key needed)
-- **No databases** - simple file-based storage as required
-- All customer data is in `customers.csv`
-- All business rules in `retention_rules.json`
-- Actions logged to `customer_updates.log` (created automatically)
-
-## 🐛 Troubleshooting
-
-**Error: GROQ_API_KEY not found**
-- Make sure `.env` file exists with your Groq API key
-- Format: `GROQ_API_KEY=your_key_here` (no quotes, no spaces)
-
-**Error: Module not found**
-- Run `pip install -r requirements.txt`
-- Make sure you're in a virtual environment (recommended)
-
-**Error: "Microsoft Visual C++ 14.0 or greater is required" (Windows)**
-- Install [Microsoft C++ Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/)
-- Or install [Visual Studio Community](https://visualstudio.microsoft.com/) with C++ development tools
-- Restart terminal and run `pip install -r requirements.txt` again
-
-**Error: Policy documents not found**
-- Ensure all `.md` files are in root directory:
-  - `return_policy.md`
-  - `care_plus_benefits.md`
-  - `troubleshooting_guide.md`
-  - `retention_playbook.md`
-- Ensure `retention_rules.json` and `customers.csv` are present
-
-**Error: Customer not found**
-- Use emails from `customers.csv` (e.g., `sarah.chen@email.com`)
-- Email matching is case-insensitive
-
-**Error: FAISS index not found**
-- This is normal on first run - FAISS will build the index automatically
-- Takes a few seconds on first run, then cached
-
-**Error: Import errors**
-- Make sure you're running from the project root directory
-- Check that all `__init__.py` files exist in `agents/`, `tools/`, `rag/`, `tests/`
-
-## 📧 Support
-
-For questions about this implementation, refer to the guidelines document.
-
----
-
-**Built with**: LangChain, LangGraph, Groq (Llama 3.1), HuggingFace Embeddings, FAISS
-**Status**: ✅ All requirements implemented
-
----
-
-## 🎯 Quick Start Summary
-
-1. **Clone & Setup:**
-   ```bash
-   git clone <repo-url>
-   cd callagent
-   pip install -r requirements.txt
-   ```
-
-2. **Configure API Key:**
-   ```bash
-   echo GROQ_API_KEY=your_key > .env
-   ```
-
-3. **Run Tests:**
-   ```bash
-   python tests/test_scenarios.py
-   ```
-
-4. **Run Interactive Chat:**
-   ```bash
-   python main.py
-   ```
-
-That's it! The system will automatically build the FAISS index on first run.
